@@ -1,13 +1,27 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import { Suspense } from 'react';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-
+import { RouterProvider } from 'react-router-dom';
+import { HelmetProvider } from 'react-helmet-async';
+import store from './Store/Store.js';
+import { Provider } from 'react-redux';
+import router from './Routes.jsx';
+import LoadingSpinner from './components/LoadingSpinner.jsx';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <HelmetProvider>
+      <Suspense fallback={<div><LoadingSpinner /></div>}>
+        <Provider store={store}>
+
+          <RouterProvider router={router} />
+
+        </Provider>
+      </Suspense>
+    </HelmetProvider>
   </React.StrictMode>
 );
 
