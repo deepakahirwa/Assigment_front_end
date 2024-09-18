@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const conf = {
-    baseURL: 'http://localhost:8500',
+    baseURL: 'https://walrus-app-jxzri.ondigitalocean.app/',
     email: String(process.env.EMAIL),
     password: String(process.env.PASSWORD)
 };
